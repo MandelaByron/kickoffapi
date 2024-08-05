@@ -52,12 +52,16 @@ services:
 
     ports:
       - "80:80"
+      - "443:443"
 
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - static_volume:/app/static/
       - /etc/letsencrypt:/etc/letsencrypt
-
+    environment:
+      - NGINX_HOST=api.kickoffdata.com
+      - NGINX_PORT=80
+      
   celery-beat:
     build: .
 
