@@ -58,6 +58,7 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - static_volume:/app/static/
       - /etc/letsencrypt:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     environment:
       - NGINX_HOST=api.kickoffdata.com
       - NGINX_PORT=80
@@ -92,6 +93,7 @@ services:
     image: certbot/certbot:latest
     volumes:
       - ./letsencrypt:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - nginx
