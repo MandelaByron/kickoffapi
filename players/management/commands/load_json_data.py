@@ -25,19 +25,19 @@ class Command(BaseCommand):
                 else:
                     None
                     
-            with transaction.atomic():
-                print("Updating the Player's Database")
-                self.stdout.write(self.style.SUCCESS("---Player's Database----"))
-                for player in player_data:
-                    player['date_of_birth'] = parse_date(player.get("date_of_birth"))
-                    player['contract_expires'] = parse_date(player.get("contract_expires"))
-                    player['joined_date'] = parse_date(player.get("joined_date"))
-                    
-                    Player.objects.update_or_create(
-                        id = player['id'],
-                        defaults=player
-                    )
-                    #Player.objects.create(**player)
+            
+            print("Updating the Player's Database")
+            self.stdout.write(self.style.SUCCESS("---Player's Database----"))
+            for player in player_data:
+                player['date_of_birth'] = parse_date(player.get("date_of_birth"))
+                player['contract_expires'] = parse_date(player.get("contract_expires"))
+                player['joined_date'] = parse_date(player.get("joined_date"))
+                
+                Player.objects.update_or_create(
+                    id = player['id'],
+                    defaults=player
+                )
+                #Player.objects.create(**player)
                 
             self.stdout.write(self.style.SUCCESS("Data loaded Successfully"))
         
