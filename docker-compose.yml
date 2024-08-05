@@ -28,6 +28,7 @@ services:
 
     volumes:
       - .:/app
+      - ./letsencrypt:/etc/letsencrypt
       - static_volume:/app/static/
 
     env_file:
