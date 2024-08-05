@@ -82,7 +82,13 @@ services:
       - db
       - redis
 
-
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - nginx
 volumes:
   static_volume:
   postgres_data_main_update:
