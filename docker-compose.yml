@@ -24,7 +24,14 @@ services:
     expose:
       - 8000
 
-    command: sh -c "python3 manage.py makemigrations && python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python3 manage.py load_json_data && gunicorn backend.wsgi:application --bind 0.0.0.0:8000 --workers 3"
+    command: >
+          sh -c "
+          gunicorn backend.wsgi:application --bind 0.0.0.0:8000 --workers 3" &&
+          python3 manage.py makemigrations &&
+          python3 manage.py migrate --noinput &&
+          python3 manage.py collectstatic --noinput &&
+          python3 manage.py load_json_data
+
 
     volumes:
       - .:/app
