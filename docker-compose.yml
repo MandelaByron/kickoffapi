@@ -59,6 +59,7 @@ services:
       - static_volume:/app/static/
       - certbot_certs:/etc/letsencrypt
       - certbot_certs_data:/var/lib/letsencrypt
+      - ./letsencrypt_webroot:/var/lib/letsencrypt/webroot
 
       
   celery-beat:
