@@ -106,6 +106,8 @@ services:
 
 volumes:
   static_volume:
+  certbot_certs:
+  certbot_certs_data:
   postgres_data_main_update:
 
 
