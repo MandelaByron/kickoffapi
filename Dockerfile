@@ -12,7 +12,7 @@ RUN chmod +x /app/entrypoint.sh
 
 ENV DJANGO_SETTINGS_MODULE=backend.settings
 
-ENTRYPOINT [ "sh" , "/app/entrypoint.sh" ]
+#ENTRYPOINT [ "sh" , "/app/entrypoint.sh" ]
 
 #CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
 
